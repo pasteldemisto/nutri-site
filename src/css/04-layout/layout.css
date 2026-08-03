@@ -1,0 +1,119 @@
+/* ==========================================================================
+   LAYOUT
+   Estruturas reutilizáveis: containers, grid, wrappers de seção.
+   Não é sobre "como cada componente parece", e sim "como o espaço é organizado".
+   ========================================================================== */
+
+/* ---- Container central (limita largura máxima do conteúdo) ---- */
+.container {
+  width: 100%;
+  max-width: var(--container-max-width);
+  margin-inline: auto;
+  padding-inline: var(--space-md);
+}
+
+@media (min-width: 768px) {
+  .container {
+    padding-inline: var(--space-xl);
+  }
+}
+
+/* ---- Wrapper padrão de seção (espaçamento vertical consistente) ---- */
+.section {
+  padding-block: var(--space-3xl);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--space-4xl);
+  }
+}
+
+/* Seção com fundo alternado (zebra pattern entre seções) */
+.section--alt {
+  background-color: var(--color-neutral-100);
+}
+
+/* ---- Grid flexível reutilizável ---- */
+.grid {
+  display: grid;
+  gap: var(--space-lg);
+}
+
+.grid > * {
+  min-width: 0;
+}
+
+.grid--2-cols {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+.grid--3-cols {
+  grid-template-columns: repeat(1, 1fr);
+}
+
+@media (min-width: 640px) {
+  .grid--2-cols {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 768px) {
+  .grid--3-cols {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ---- Flex utilitário para alinhamentos comuns ---- */
+.flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+.flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* ---- Stack vertical com espaçamento consistente entre filhos ---- */
+.stack {
+  min-width: 0;
+}
+
+.stack > * + * {
+  margin-top: var(--space-md);
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+}
+
+@media (max-width: 480px) {
+  .hero__actions {
+    flex-direction: column;
+  }
+
+  .hero__actions .button {
+    width: 100%;
+  }
+}
+
+/* ---- Header fixo (usado pela navbar) ---- */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: var(--z-header);
+  height: var(--header-height);
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-sm);
+}

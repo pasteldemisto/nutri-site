@@ -1,0 +1,97 @@
+/* ==========================================================================
+   COMPONENT: Card
+   Bloco reutilizável para: Serviços, Diferenciais e Avaliações de pacientes.
+   ========================================================================== */
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+
+  padding: var(--space-xl);
+  background-color: var(--color-white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid rgba(47, 125, 94, 0.08);
+
+  transition: box-shadow var(--transition-base), 
+              transform var(--transition-base);
+}
+
+.card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-4px);
+}
+
+/* ---- Elemento: Ícone do card (usado em "Serviços" e "Diferenciais") ---- */
+.card__icon {
+  width: 48px;
+  height: 48px;
+  color: var(--color-primary);
+}
+
+/* ---- Elemento: Título ---- */
+.card__title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+}
+
+/* ---- Elemento: Descrição ---- */
+.card__description {
+  font-size: var(--font-size-base);
+  color: var(--color-neutral-700);
+  line-height: var(--line-height-base);
+}
+
+.legal-page {
+  background-color: var(--color-white);
+  border: 1px solid rgba(47, 125, 94, 0.12);
+  border-radius: var(--radius-lg);
+  padding: var(--space-2xl);
+  box-shadow: var(--shadow-sm);
+}
+
+/* ---- Modificador: Card centralizado (ícone + texto no centro) ---- */
+.card--centered {
+  align-items: center;
+  text-align: center;
+}
+
+/* ---- Modificador: Card de depoimento (avaliações de pacientes) ---- */
+.card--testimonial {
+  position: relative;
+  border-left: 4px solid var(--color-primary);
+}
+
+.card--testimonial .card__description {
+  font-style: italic;
+}
+
+/* ---- Elemento: Autor do depoimento ---- */
+.card__author {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  margin-top: var(--space-sm);
+}
+
+.card__author-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+}
+
+.card__author-name {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-900);
+}
+
+/* ---- Elemento: Estrelas de avaliação ---- */
+.card__rating {
+  display: flex;
+  gap: var(--space-2xs);
+  color: var(--color-secondary);
+}

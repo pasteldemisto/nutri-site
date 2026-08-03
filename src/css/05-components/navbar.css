@@ -1,0 +1,145 @@
+/* ==========================================================================
+   COMPONENT: Navbar
+   Navegação principal do site, dentro do .header (sticky) já definido em
+   04-layout/layout.css.
+   ========================================================================== */
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: var(--header-height);
+  height: 100%;
+  gap: var(--space-md);
+}
+
+/* ---- Elemento: Logo/marca ---- */
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+  flex-shrink: 0;
+
+  font-family: var(--font-secondary);
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-neutral-900);
+}
+
+.navbar__brand-logo {
+  height: 40px;
+  width: auto;
+}
+
+/* ---- Elemento: Lista de links (desktop) ---- */
+.navbar__list {
+  display: none;
+  align-items: center;
+  gap: var(--space-xl);
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .navbar__list {
+    display: flex;
+  }
+}
+
+.navbar__link {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-neutral-700);
+  transition: color var(--transition-fast);
+}
+
+.navbar__link:hover,
+.navbar__link--active {
+  color: var(--color-primary);
+}
+
+/* ---- Elemento: Botão hambúrguer (mobile) ---- */
+.navbar__toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+@media (min-width: 768px) {
+  .navbar__toggle {
+    display: none;
+  }
+}
+
+.navbar__toggle-bar {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-neutral-900);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+/* ---- Estado: Menu mobile aberto (classe adicionada via JS) ---- */
+.navbar__toggle--open .navbar__toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.navbar__toggle--open .navbar__toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar__toggle--open .navbar__toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---- Elemento: Menu mobile (drawer) ---- */
+.navbar__mobile-menu {
+  position: fixed;
+  top: var(--header-height);
+  left: 0;
+  right: 0;
+  width: 100%;
+  max-width: 100vw;
+  background-color: var(--color-white);
+  box-shadow: var(--shadow-md);
+
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-lg);
+  gap: var(--space-md);
+
+  transform: translateY(-10px);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform var(--transition-base), 
+              opacity var(--transition-base), 
+              visibility var(--transition-base);
+}
+
+.navbar__mobile-menu--open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+}
+
+@media (min-width: 768px) {
+  .navbar__mobile-menu {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar__brand {
+    font-size: var(--font-size-md);
+  }
+
+  .navbar__brand-logo {
+    width: 34px;
+    height: 34px;
+  }
+}

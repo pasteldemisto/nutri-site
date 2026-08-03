@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="Logo da nutricionista">
+  <rect width="120" height="120" rx="24" fill="#E8F3EE"/>
+  <path d="M60 20c-10 8-18 21-18 33 0 8 3 15 8 20 4 4 10 7 18 7 9 0 14-4 18-8 7-7 10-18 10-28C96 36 82 22 60 20Z" fill="#2F7D5E"/>
+  <path d="M46 51c6 0 11 5 11 11s-5 11-11 11-11-5-11-11 5-11 11-11Zm28 0c6 0 11 5 11 11s-5 11-11 11-11-5-11-11 5-11 11-11Z" fill="#fff" opacity="0.9"/>
+  <path d="M48 28c4 8 10 15 18 21 10-6 16-13 20-21" fill="none" stroke="#F4A261" stroke-width="6" stroke-linecap="round"/>
+</svg>

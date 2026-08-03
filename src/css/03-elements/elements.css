@@ -1,0 +1,139 @@
+/* ==========================================================================
+   ELEMENTS
+   Estilos base aplicados diretamente às tags HTML (sem classes).
+   Usa os design tokens definidos em 01-settings/tokens.css.
+   ========================================================================== */
+
+html {
+  scroll-behavior: smooth;
+  font-size: 100%; /* respeita configuração de fonte do usuário no navegador */
+}
+
+body {
+  font-family: var(--font-primary);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-regular);
+  color: var(--color-neutral-900);
+  background-color: var(--color-white);
+}
+
+/* ---- Headings ---- */
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-secondary);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  color: var(--color-neutral-900);
+}
+
+h1 {
+  font-size: var(--font-size-3xl);
+}
+
+h2 {
+  font-size: var(--font-size-2xl);
+}
+
+h3 {
+  font-size: var(--font-size-xl);
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+}
+
+/* ---- Texto ---- */
+p {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  color: var(--color-neutral-700);
+}
+
+small {
+  font-size: var(--font-size-sm);
+  color: var(--color-neutral-500);
+}
+
+/* ---- Links ---- */
+a {
+  color: var(--color-primary);
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-primary-dark);
+}
+
+/* ---- Botões base ---- */
+button {
+  font-family: var(--font-primary);
+  font-weight: var(--font-weight-medium);
+  transition: background-color var(--transition-fast), 
+              transform var(--transition-fast);
+}
+
+/* ---- Formulários ---- */
+input,
+textarea,
+select {
+  border: 1px solid var(--color-neutral-300);
+  border-radius: var(--radius-sm);
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-base);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+input.is-invalid,
+textarea.is-invalid {
+  border-color: var(--color-feedback-error);
+  background-color: rgba(191, 59, 59, 0.04);
+}
+
+input[type="checkbox"].is-invalid {
+  outline: 2px solid var(--color-error);
+  outline-offset: 2px;
+}
+
+label {
+  display: block;
+  font-weight: var(--font-weight-medium);
+  margin-bottom: var(--space-2xs);
+  color: var(--color-neutral-900);
+}
+
+.contact-form__consent {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-sm);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-base);
+}
+
+.contact-form__consent input {
+  margin-top: 0.2rem;
+}
+
+.contact-form__status {
+  min-height: 1.25rem;
+  margin: 0;
+  font-size: var(--font-size-sm);
+  color: var(--color-primary-dark);
+}
+
+.contact-form__status.is-error {
+  color: var(--color-feedback-error);
+}
+
+/* ---- Seleção de texto customizada (detalhe de marca) ---- */
+::selection {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-dark);
+}

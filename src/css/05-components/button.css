@@ -1,0 +1,68 @@
+/* ==========================================================================
+   COMPONENT: Button
+   Bloco reutilizável para todos os CTAs do site (hero, formulário, cards).
+   ========================================================================== */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+
+  padding: var(--space-sm) var(--space-xl);
+  border-radius: var(--radius-full);
+
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  text-align: center;
+  white-space: nowrap;
+
+  cursor: pointer;
+}
+
+/* ---- Modificador: Variante primária (CTA principal) ---- */
+.button--primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.button--primary:hover {
+  background-color: var(--color-primary-dark);
+  transform: translateY(-2px);
+}
+
+/* ---- Modificador: Variante secundária (ação de apoio) ---- */
+.button--secondary {
+  background-color: transparent;
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.button--secondary:hover {
+  background-color: var(--color-primary-light);
+}
+
+/* ---- Modificador: Tamanho grande (hero, destaque) ---- */
+.button--lg {
+  padding: var(--space-md) var(--space-2xl);
+  font-size: var(--font-size-md);
+}
+
+/* ---- Modificador: Largura total (mobile, formulários) ---- */
+.button--full {
+  width: 100%;
+}
+
+/* ---- Estado: Desabilitado ---- */
+.button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* ---- Ícone dentro do botão (ex: seta, WhatsApp) ---- */
+.button__icon {
+  width: 1.25em;
+  height: 1.25em;
+  flex-shrink: 0;
+}

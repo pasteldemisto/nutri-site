@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 80 80" role="img" aria-label="Avatar paciente">
+  <rect width="80" height="80" rx="40" fill="#E8F3EE"/>
+  <circle cx="40" cy="30" r="15" fill="#2F7D5E" opacity="0.75"/>
+  <path d="M20 68c3-14 14-22 20-22s17 8 20 22" fill="#F4A261" opacity="0.8"/>
+</svg>
