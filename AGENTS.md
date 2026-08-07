@@ -129,27 +129,38 @@ O CSS é organizado em camadas invertidas (do mais genérico ao mais específico
 
 ### 4.4 HTML — `index.html`
 
-Draft completo já escrito, single-page com seções via âncora (`#inicio`, `#sobre`, `#servicos`, `#diferenciais`, `#avaliacoes`, `#faq`, `#contato`). Inclui:
+O projeto já foi implantado (deploy) e está publicamente acessível em `https://nutri-site-nine.vercel.app/` (hospedagem provisória — ver nota de migração abaixo). Estrutura confirmada ao vivo, single-page com seções via âncora (`#inicio`, `#sobre`, `#servicos`, `#diferenciais`, `#avaliacoes`, `#faq`, `#contato`). Inclui:
 - Navbar responsiva (desktop: lista horizontal / mobile: hambúrguer + drawer)
-- Hero, Sobre, Serviços (grid 3 colunas), Diferenciais (grid 2 colunas), Avaliações (cards de depoimento), FAQ (via `<details>/<summary>` nativo), Contato (formulário FormSubmit + iframe do Google Maps)
-- Footer com grid de 3 colunas (marca / navegação / contato)
+- Hero, Sobre, Serviços (grid 3 colunas), Diferenciais (grid 2 colunas), Avaliações (cards de depoimento), FAQ (via `<details>/<summary>` nativo)
+- Contato **sem formulário de envio** — decisão tomada para evitar a necessidade de proteção contra flood/spam/bots (rate limiting, captcha), que exigiria backend próprio ou serviço de terceiros. Contato feito diretamente por telefone, WhatsApp, e-mail e localização.
+- Footer com grid de 3 colunas (marca / navegação / contato), incluindo links para Política de Privacidade, Termos de Uso e Responsabilidade Profissional (páginas `.html` separadas, já existentes no repositório)
 - Botão flutuante do WhatsApp
 - JSON-LD `MedicalBusiness` no `<head>`
 
-**⚠️ IMPORTANTE — Pendências conhecidas no `index.html` (auditoria de SEO já feita, correções NÃO aplicadas ainda):**
+**⚠️ Nota sobre hospedagem:** o deploy atual está no Vercel, plano Hobby (gratuito). Esse plano é restrito a uso pessoal/não-comercial nos termos do Vercel, e este projeto é remunerado — portanto tecnicamente já se enquadra como uso comercial. **Migração planejada para Cloudflare Pages**, que não tem essa restrição, e que também vai hospedar o domínio (registro no Cloudflare Registrar). Migração ainda não confirmada como executada.
 
-| Pendência | Status |
+**Estado da auditoria de SEO — confirmado ao vivo no deploy atual:**
+
+| Item | Status confirmado |
 |---|---|
-| `robots.txt` em `/public` | Não confirmado se foi criado |
-| `sitemap.xml` em `/public` | Não confirmado se foi criado |
-| Schema JSON-LD `FAQPage` | Especificado, **não inserido** no HTML ainda |
-| `og:image:width`, `og:image:height`, `og:image:alt` | Especificados, **não inseridos** ainda |
-| `<meta name="robots" content="index, follow">` | Especificado, **não inserido** ainda |
-| Todos os assets referenciados (logo, ícones de serviço, ícones sociais, fotos de hero/sobre/depoimentos, og-image) | **Não existem fisicamente** — são placeholders de caminho no HTML |
-| Domínio real (`seudominio.com.br`) | Placeholder — trocar por domínio real quando definido |
+| `og:image:width`, `og:image:height`, `og:image:alt` | ✅ Presentes no HTML publicado |
+| `<meta name="robots" content="index, follow">` | ✅ Presente |
+| `canonical` e metadados Open Graph/Twitter | ✅ Presentes |
+| `robots.txt` | ✅ Confirmado — conteúdo padrão (`Allow: /` + linha de Sitemap) |
+| `sitemap.xml` | ✅ Confirmado — uma única URL (site single-page) |
+| Schema JSON-LD `FAQPage` | Não confirmado se foi inserido — verificar |
+
+**Pendências ainda abertas (placeholders a substituir por dados reais da cliente):**
+
+| Placeholder | Status |
+|---|---|
+| Domínio real (`seudominio.com.br` nos metadados) | Ainda placeholder — trocar quando o domínio definitivo for registrado |
+| Todos os assets visuais (logo, ícones, fotos de hero/sobre/depoimentos, og-image) | Ainda SVGs/imagens genéricas de placeholder, não fotos reais da cliente |
+| Nome da nutricionista | Placeholder ("Nome da Nutricionista" / "Nome da Nutri") |
 | Telefone/WhatsApp (`5585999999999`) | Placeholder — trocar pelo número real |
-| E-mail do FormSubmit (`seuemail@dominio.com`) | Placeholder — trocar pelo e-mail real |
-| CRN (registro profissional) | Placeholder no footer — preencher número real |
+| E-mail (`seuemail@dominio.com`) | Placeholder — trocar pelo e-mail real |
+| Instagram (`instagram.com/seuinstagram`) | Placeholder |
+| CRN (registro profissional) | Placeholder no footer (`000000/CE`) — preencher número real |
 | Google Maps embed | Placeholder (`SEU_EMBED_AQUI`) — trocar pelo embed real do endereço |
 
 ### 4.5 JavaScript
@@ -161,8 +172,9 @@ Módulo único implementado até agora: `navbar.js` (exporta `initNavbar()`), ch
 **Ainda não implementado:**
 - Nenhum Web Component nativo em `js/components/` (planejado, ex: `<whatsapp-button>`)
 - Nenhuma função utilitária em `js/utils/`
-- Nenhuma validação de formulário de contato (client-side)
 - Nenhum smooth-scroll customizado (atualmente depende só de `scroll-behavior: smooth` no CSS)
+
+**Decisão registrada — formulário de contato removido:** o formulário de contato (FormSubmit) previsto inicialmente foi retirado do site. Motivo: implementar as proteções necessárias contra flood/spam/bots (rate limiting, captcha) exigiria backend próprio ou dependência de serviço de terceiros mais robusto — contra a diretriz de manter a menor superfície de ataque possível. O contato foi centralizado em telefone, WhatsApp, e-mail e localização. Se um formulário for reintroduzido no futuro, considerar soluções que mantenham a arquitetura estática, como campo honeypot (via FormSubmit) ou Cloudflare Turnstile (compatível com a hospedagem planejada).
 
 ---
 
@@ -170,19 +182,16 @@ Módulo único implementado até agora: `navbar.js` (exporta `initNavbar()`), ch
 
 Em ordem de discussão com o usuário (mais recente primeiro):
 
-1. **[EM ABERTO]** Aplicar correções de SEO pendentes no `index.html` (tabela da seção 4.4) — usuário pediu para aguardar antes de aplicar, ainda não confirmou execução
-2. Criar `robots.txt` e `sitemap.xml` em `/public`
-3. Adicionar JSON-LD `FAQPage`
-4. Corrigir metadados Open Graph de imagem (width/height/alt)
-5. Adicionar `<meta name="robots">`
-6. Customizar `vite.config.js` para build correto (avaliar se precisa de config MPA — hoje o site é single-page, então padrão do Vite deve bastar, mas revisar `build.rollupOptions` se páginas adicionais forem criadas)
-7. Popular `06-utilities/` conforme necessidade real aparecer (evitar criar utilities especulativas)
-8. Decidir se Tailwind será usado ou se o projeto segue 100% CSS puro (ainda em aberto — o projeto permite ambos)
-9. Criar/obter assets reais: logo, ícones (whatsapp, instagram, serviços), fotos (hero, sobre, depoimentos), og-image (1200x630px)
-10. Implementar validação client-side leve no formulário de contato (sem biblioteca externa)
-11. Configurar headers de segurança na hospedagem final (CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy, X-Content-Type-Options) — depende de qual hospedagem for escolhida (Netlify/Vercel/Cloudflare Pages têm formas distintas de configurar)
-12. Testar `npm run dev` e validar renderização visual de tudo que foi construído até aqui
-13. Rodar auditoria Lighthouse (Performance/SEO/Acessibilidade/Boas práticas) antes de considerar o projeto pronto para produção
+1. Confirmar se o Schema JSON-LD `FAQPage` foi inserido no HTML publicado
+2. **Migrar hospedagem de Vercel (Hobby) para Cloudflare Pages** — motivo: plano gratuito do Vercel não permite uso comercial, e este é um projeto remunerado
+3. Registrar domínio definitivo no Cloudflare Registrar, em nome da cliente
+4. Substituir todos os placeholders restantes (tabela da seção 4.4) por dados reais fornecidos pela cliente
+5. Customizar `vite.config.js` para build correto, se necessário (hoje o site é single-page, padrão do Vite deve bastar)
+6. Popular `06-utilities/` conforme necessidade real aparecer (evitar criar utilities especulativas)
+7. Decidir se Tailwind será usado ou se o projeto segue 100% CSS puro (ainda em aberto — o projeto permite ambos)
+8. Configurar headers de segurança na hospedagem final (CSP, X-Frame-Options, Referrer-Policy, Permissions-Policy, X-Content-Type-Options) — ajustar conforme configuração específica do Cloudflare Pages
+9. Rodar auditoria Lighthouse (Performance/SEO/Acessibilidade/Boas práticas) antes de considerar o projeto pronto para produção
+10. Se um formulário de contato for reintroduzido no futuro, avaliar honeypot (FormSubmit) ou Cloudflare Turnstile como proteção contra spam/bots, mantendo a arquitetura estática
 
 ---
 
