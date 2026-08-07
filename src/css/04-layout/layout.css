@@ -40,6 +40,10 @@
   gap: var(--space-lg);
 }
 
+.grid--centered {
+  align-items: center;
+}
+
 .grid > * {
   min-width: 0;
 }

@@ -48,7 +48,7 @@
   font-size: var(--font-size-md);
 }
 
-/* ---- Modificador: Largura total (mobile, formulários) ---- */
+/* ---- Modificador: Largura total (casos especiais) ---- */
 .button--full {
   width: 100%;
 }

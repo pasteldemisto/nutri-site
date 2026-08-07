@@ -255,58 +255,52 @@
     </section>
 
     <!-- ==================== CONTATO ==================== -->
-    <section id="contato" class="section">
+    <section id="contato" class="section section--alt">
       <div class="container">
-        <div class="grid grid--2-cols">
-          <div class="stack">
+        <div class="grid grid--2-cols grid--centered">
+          <div class="card contact-card">
+            <p class="contact-card__eyebrow">Contato</p>
             <h2>Vamos conversar?</h2>
-            <p>Preencha o formulário abaixo e retornarei o mais breve possível.</p>
+            <p>Você pode entrar em contato por telefone, WhatsApp, e-mail ou seguir nas redes sociais.</p>
 
-            <!-- Formulário via FormSubmit (ou serviço equivalente), sem backend próprio -->
-            <form action="https://formsubmit.co/seuemail@dominio.com" method="POST" class="stack contact-form" data-contact-form novalidate>
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_next" value="https://www.seudominio.com.br/obrigado.html" />
+            <ul class="contact-list">
+              <li class="contact-item">
+                <span class="contact-item__label">Telefone</span>
+                <a class="contact-item__value" href="tel:+5585999999999">+55 (85) 99999-9999</a>
+              </li>
+              <li class="contact-item">
+                <span class="contact-item__label">WhatsApp</span>
+                <a class="contact-item__value" href="https://wa.me/5585999999999" target="_blank" rel="noopener noreferrer">+55 (85) 99999-9999</a>
+              </li>
+              <li class="contact-item">
+                <span class="contact-item__label">E-mail</span>
+                <a class="contact-item__value" href="mailto:seuemail@dominio.com">seuemail@dominio.com</a>
+              </li>
+              <li class="contact-item">
+                <span class="contact-item__label">Localização</span>
+                <span class="contact-item__value">Fortaleza, CE</span>
+              </li>
+            </ul>
 
-              <div>
-                <label for="nome">Nome</label>
-                <input type="text" id="nome" name="nome" required minlength="2" placeholder="Seu nome completo" />
-              </div>
-
-              <div>
-                <label for="email">E-mail</label>
-                <input type="email" id="email" name="email" required placeholder="seu@email.com" />
-              </div>
-
-              <div>
-                <label for="mensagem">Mensagem</label>
-                <textarea id="mensagem" name="mensagem" rows="4" required minlength="10" placeholder="Conte em poucas palavras o que você precisa."></textarea>
-              </div>
-
-              <label class="contact-form__consent" for="consentimento">
-                <input type="checkbox" id="consentimento" name="consentimento" data-contact-consent required />
-                <span>Concordo que meus dados sejam utilizados apenas para responder minha mensagem e entrar em contato comigo.</span>
-              </label>
-
-              <p class="contact-form__status" data-contact-form-status aria-live="polite"></p>
-              <p class="contact-form__privacy-note">
-                Ao enviar, você concorda com a <a href="/politica-de-privacidade.html">Política de Privacidade</a>, os <a href="/termos-de-uso.html">Termos de Uso</a> e a <a href="/responsabilidade-profissional.html">Responsabilidade Profissional</a>.
-              </p>
-              <button type="submit" class="button button--primary button--full">Enviar mensagem</button>
-            </form>
+            <div class="contact-socials">
+              <a href="https://instagram.com/seuinstagram" target="_blank" rel="noopener noreferrer" aria-label="Instagram">Instagram</a>
+              <a href="https://wa.me/5585999999999" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">WhatsApp</a>
+            </div>
           </div>
 
-          <!-- ==================== LOCALIZAÇÃO ==================== -->
-          <div class="stack">
-            <h3>Localização</h3>
-            <iframe
-              src="https://www.google.com/maps/embed?pb=SEU_EMBED_AQUI"
-              width="100%"
-              height="320"
-              style="border:0; border-radius: var(--radius-md);"
-              loading="lazy"
-              referrerpolicy="no-referrer-when-downgrade"
-              title="Mapa de localização do consultório">
-            </iframe>
+          <div class="card contact-card contact-card--map">
+            <div class="contact-card__map-header">
+              <h3>Localização</h3>
+              <p>Atendimento presencial em Fortaleza, com apoio remoto quando necessário.</p>
+            </div>
+            <div class="contact-map">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=SEU_EMBED_AQUI"
+                loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"
+                title="Mapa de localização do consultório">
+              </iframe>
+            </div>
           </div>
         </div>
       </div>
